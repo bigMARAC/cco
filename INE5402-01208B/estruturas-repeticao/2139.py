@@ -13,6 +13,6 @@ while True:
       for i in range(month - 1, len(monthsList)):
         days += monthsList[i]
       days -= day
-      print(days)
+      print("Faltam %d para o nalta!" % days)
   except:
       break
