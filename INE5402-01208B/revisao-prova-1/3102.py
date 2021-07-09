@@ -1,3 +1,4 @@
+import math
 index = int(input())
 
 for i in range(index):
@@ -11,4 +12,4 @@ for i in range(index):
     final -= matriz[0][0] * matriz[1][2] * matriz[2][1]
     final -= matriz[0][2] * matriz[1][1] * matriz[2][0]
     
-    print("%.3f" % ((1/2) * final))
+    print("%.3f" % ((1/2) * math.fabs(final)))
