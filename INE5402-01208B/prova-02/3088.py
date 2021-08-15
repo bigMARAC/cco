@@ -1,3 +1,6 @@
+# Um problema bastante simples,
+# basta substituir o conjunto de caracteres
+# ' ,' e ' .' pelos caracteres ',' e '.'
 while True:
   try:
     text = input()
