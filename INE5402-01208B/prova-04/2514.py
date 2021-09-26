@@ -3,45 +3,23 @@
 # informado
 
 
-# returns the first prime number after index
-def get_next_prime_number(index: int) -> int:
-  if index >= 997:
-    return 997
+# retorna o mdc de dois números
+def calc_mdc(n1: int, n2: int) -> int:
+  while(n1):
+    n2, n1 = n1, n2 % n1
+  return n2
 
-  for x in range(index + 1, 1000):
-    prime = True
-    for y in range(1, 1000):
-      if y != 1 and x % y == 0 and x != y:
-        prime = False
-    if prime:
-      if x == 1:
-        return 2
-      return x
+# retorna o mmc de 3 números
+def calc_mmc(n1: int, n2: int, n3: int) -> int:
+  mdc = calc_mdc(n1, n2)
 
-def calc_mmc(numbers: list) -> int:
-  aux = []
-  while True:
-    breaker = False
-    for x in range(0, numbers[2]):
-      if breaker: break
-      prime_number = get_next_prime_number(x)
-      for idx in range(len(numbers)):
-        if numbers[idx] %  prime_number == 0:
-          aux.append(prime_number)
-          print('num: %d - prime: %d' % (numbers[idx], prime_number))
-          print(numbers)
-          numbers[idx] = numbers[idx] // prime_number
-          breaker = True
-          break
+  mmc = (n1 * n2) // mdc
+  return (n3 * mmc) // calc_mdc(n3, mmc)
 
-    if sum(numbers) == 3:
-      break
-  print(aux)
-# while True:
-#   try:
-last = int(input())
-numbers = list(map(int, input().split()))
-calc_mmc(numbers)
-# print(calc_mmc(numbers) - last)
-#   except:
-#     break
+while True:
+  try:
+    last = int(input())
+    n1, n2, n3 = map(int, input().split())
+    print(calc_mmc(n1, n2, n3) - last)
+  except:
+    break
